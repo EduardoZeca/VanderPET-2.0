@@ -5,7 +5,20 @@ namespace VanderPET_2._0.Dados
     public static class DadosApp
     {
         // Usuários cadastrados
-        public static List<Usuario> Usuarios { get; set; } = new List<Usuario>();
+        public static List<Usuario> Usuarios { get; set; } = new()
+        {
+            new Usuario
+            {
+                ID = 1,
+                Nome = "Usuário Teste",
+                Email = "teste@gmail.com",
+                CPF = "123.456.789-00",
+                Telefone = "(11) 99999-9999",
+                CEP = "12345-678",
+                Endereco = "Rua de Teste, 100",
+                Senha = "123456"
+            }
+        };
         // PETs cadastrados
         public static List<Pet> Pets { get; set; } = new List<Pet>();
         // Agendamentos realizados

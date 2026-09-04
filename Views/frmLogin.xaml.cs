@@ -45,8 +45,7 @@ public partial class frmLogin : ContentPage
         DadosApp.UsuarioLogado = usuario;
 
         await DisplayAlertAsync("Login", $"Bem-vindo, {usuario.Nome}!", "OK");
-        // Redirecionamento temporário até que o frmAgendamento seja implementado
-        await Navigation.PushAsync(new frmPets());
+        await Navigation.PushAsync(new frmAgendamento());
     }
     private void MostrarErro(string mensagem)
     {

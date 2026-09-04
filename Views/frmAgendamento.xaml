@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:VanderPET_2._0.Models"
+             x:Class="VanderPET_2._0.Views.frmAgendamento"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F5F5F5">
+    <Grid RowDefinitions="Auto,*,Auto" Padding="25" RowSpacing="15">
+        <Grid Grid.Row="0"
+              RowDefinitions="Auto,Auto"
+              ColumnDefinitions="*,Auto"
+              Margin="0,15,0,5">
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Text="Agendamentos"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="#333333"/>
+            <Button Grid.Row="0"
+                    Grid.Column="1"
+                    Text="SAIR"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    BackgroundColor="#E5E7EB"
+                    TextColor="#333333"
+                    CornerRadius="8"
+                    Padding="15,8"
+                    Clicked="btnSair_Clicked"/>
+            <Label Grid.Row="1"
+                   Grid.ColumnSpan="2"
+                   Text="Seus agendamentos recentes"
+                   FontSize="14"
+                   TextColor="#777777"
+                   Margin="0,5,0,0"/>
+        </Grid>
+
+        <CollectionView x:Name="cvAgendamentos" Grid.Row="1" SelectionMode="None">
+            <CollectionView.EmptyView>
+                <VerticalStackLayout
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Spacing="8">
+                    <Label Text="Nenhum agendamento encontrado."
+                           FontSize="16"
+                           TextColor="#777777"
+                           HorizontalTextAlignment="Center"/>
+                    
+                    <Label Text="Seus agendamentos aparecerão aqui."
+                           FontSize="13"
+                           TextColor="#999999"
+                           HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:AgendamentoListaItem">
+                    <Border Stroke="#DDDDDD"
+                            StrokeThickness="1"
+                            BackgroundColor="White"
+                            StrokeShape="RoundRectangle 12"
+                            Padding="15"
+                            Margin="0,0,0,12">
+
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="{Binding Pet}"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="#333333"/>
+
+                            <Label Text="{Binding Servico}"
+                                   FontSize="15"
+                                   TextColor="#555555"/>
+
+                            <Grid RowDefinitions="Auto,Auto,Auto"
+                                  ColumnDefinitions="Auto,*"
+                                  RowSpacing="5"
+                                  ColumnSpacing="10"
+                                  Margin="0,5,0,0">
+
+                                <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       Text="Valor:"
+                                       FontAttributes="Bold"
+                                       TextColor="#555555"/>
+
+                                <Label Grid.Row="0"
+                                       Grid.Column="1"
+                                       Text="{Binding Valor}"
+                                       TextColor="#555555"/>
+
+                                <Label Grid.Row="1"
+                                       Grid.Column="0"
+                                       Text="Data:"
+                                       FontAttributes="Bold"
+                                       TextColor="#555555"/>
+
+                                <Label Grid.Row="1"
+                                       Grid.Column="1"
+                                       Text="{Binding DataHora}"
+                                       TextColor="#555555"/>
+
+                                <Label Grid.Row="2"
+                                       Grid.Column="0"
+                                       Text="Status:"
+                                       FontAttributes="Bold"
+                                       TextColor="#555555"/>
+
+                                <Label Grid.Row="2"
+                                       Grid.Column="1"
+                                       Text="{Binding Status}"
+                                       FontAttributes="Bold"
+                                       TextColor="#4F46E5"/>
+
+                                <Button Text="CANCELAR AGENDAMENTO"
+                                        HeightRequest="42"
+                                        FontSize="13"
+                                        FontAttributes="Bold"
+                                        BackgroundColor="#DC2626"
+                                        TextColor="White"
+                                        CornerRadius="8"
+                                        Margin="0,8,0,0"
+                                        IsVisible="{Binding PodeCancelar}"
+                                        CommandParameter="{Binding Agendamento}"
+                                        Clicked="btnCancelar_Clicked"/>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="2"
+                Text="NOVO AGENDAMENTO"
+                HeightRequest="50"
+                FontSize="16"
+                FontAttributes="Bold"
+                BackgroundColor="#4F46E5"
+                TextColor="White"
+                CornerRadius="10"
+                Margin="0,5,0,10"
+                Clicked="btnNovoAgendamento_Clicked"/>
+    </Grid>
+</ContentPage>
