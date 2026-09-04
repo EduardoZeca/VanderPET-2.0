@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
+﻿using VanderPET_2._0.Views;
 namespace VanderPET_2._0
 {
     public partial class App : Application
@@ -7,11 +6,15 @@ namespace VanderPET_2._0
         public App()
         {
             InitializeComponent();
+            MainPage = new NavigationPage(new frmLogin());
         }
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new AppShell());
+            var window = base.CreateWindow(activationState);
+            window.Width = 375;
+            window.Height = 812;
+            return window;
         }
     }
 }

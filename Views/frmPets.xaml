@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:VanderPET_2._0.Models"
+             x:Class="VanderPET_2._0.Views.frmPets"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F5F5F5">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="25" RowSpacing="15">
+
+        <Label Grid.Row="0"
+               Text="Meus PETs"
+               FontSize="28"
+               FontAttributes="Bold"
+               TextColor="#333333"
+               HorizontalTextAlignment="Center"
+               Margin="0,20,0,10"/>
+
+        <CollectionView x:Name="cvPets" Grid.Row="1" SelectionMode="None">
+            <CollectionView.EmptyView>
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
+
+                    <Label Text="Nenhum PET cadastrado."
+                           FontSize="16"
+                           TextColor="#777777"
+                           HorizontalTextAlignment="Center"/>
+
+                    <Label Text="Cadastre seu primeiro PET para começar."
+                           FontSize="13"
+                           TextColor="#999999"
+                           HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:PetListaItem">
+                    <Border Stroke="#DDDDDD"
+                            StrokeThickness="1"
+                            BackgroundColor="White"
+                            StrokeShape="RoundRectangle 12"
+                            Padding="15"
+                            Margin="0,0,0,12">
+                        <VerticalStackLayout Spacing="8">
+
+                            <Label Text="{Binding Nome}"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="#333333"/>
+
+                            <Grid ColumnDefinitions="Auto,*"
+                                  RowDefinitions="Auto,Auto"
+                                  ColumnSpacing="8"
+                                  RowSpacing="5">
+
+                                <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       Text="Raça:"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="#555555"/>
+
+                                <Label Grid.Row="0"
+                                       Grid.Column="1"
+                                       Text="{Binding Raca}"
+                                       FontSize="14"
+                                       TextColor="#555555"/>
+
+                                <Label Grid.Row="1"
+                                       Grid.Column="0"
+                                       Text="Idade:"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="#555555"/>
+
+                                <Label Grid.Row="1"
+                                       Grid.Column="1"
+                                       Text="{Binding Idade}"
+                                       FontSize="14"
+                                       TextColor="#555555"/>
+                            </Grid>
+                            
+                            <Grid ColumnDefinitions="*,*"
+                                  ColumnSpacing="10"
+                                  Margin="0,8,0,0">
+
+                                <Button Grid.Column="0"
+                                        Text="EDITAR"
+                                        HeightRequest="42"
+                                        FontAttributes="Bold"
+                                        FontSize="13"
+                                        BackgroundColor="#E5E7EB"
+                                        TextColor="#333333"
+                                        CornerRadius="8"
+                                        CommandParameter="{Binding Pet}"
+                                        Clicked="btnEditar_Clicked"/>
+
+                                <Button Grid.Column="1"
+                                        Text="EXCLUIR"
+                                        HeightRequest="42"
+                                        FontAttributes="Bold"
+                                        FontSize="13"
+                                        BackgroundColor="#DC2626"
+                                        TextColor="White"
+                                        CornerRadius="8"
+                                        CommandParameter="{Binding Pet}"
+                                        Clicked="btnExcluir_Clicked"/>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="2"
+                Text="NOVO PET"
+                HeightRequest="50"
+                FontSize="16"
+                FontAttributes="Bold"
+                BackgroundColor="#4F46E5"
+                TextColor="White"
+                CornerRadius="10"
+                Margin="0,5,0,10"
+                Clicked="btnNovoPet_Clicked"/>
+    </Grid>
+</ContentPage>

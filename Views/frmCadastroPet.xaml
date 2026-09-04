@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VanderPET_2._0.Views.frmCadastroPet"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F5F5F5">
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="15">
+            <Label Text="Cadastrar PET"
+                   x:Name="lblTitulo"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="#333333"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,20,0,10"/>
+
+            <Label Text="Nome"
+                   FontSize="14"
+                   FontAttributes="Bold"
+                   TextColor="#333333"/>
+            <Border Stroke="#DDDDDD"
+                    StrokeThickness="1"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 10"
+                    HeightRequest="50">
+                <Entry x:Name="txtNome"
+                       Placeholder="Nome do PET"
+                       PlaceholderColor="#AAAAAA"
+                       TextColor="#333333"
+                       BackgroundColor="Transparent"
+                       Margin="10,0"/>
+            </Border>
+
+            <Label Text="Espécie"
+                   FontSize="14"
+                   FontAttributes="Bold"
+                   TextColor="#333333"/>
+            <Border Stroke="#DDDDDD"
+                    StrokeThickness="1"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 10"
+                    HeightRequest="50">
+                <Picker x:Name="pckEspecie"
+                        Title="Selecione a espécie"
+                        TitleColor="#AAAAAA"
+                        TextColor="#333333"
+                        BackgroundColor="Transparent"
+                        Margin="10,0"
+                        ItemDisplayBinding="{Binding Nome}"
+                        SelectedIndexChanged="pckEspecie_SelectedIndexChanged"/>
+            </Border>
+
+            <Label Text="Raça"
+                   FontSize="14"
+                   FontAttributes="Bold"
+                   TextColor="#333333"/>
+            <Border Stroke="#DDDDDD"
+                    StrokeThickness="1"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 10"
+                    HeightRequest="50">
+                <Picker x:Name="pckRaca"
+                        Title="Selecione a raça"
+                        TitleColor="#AAAAAA"
+                        TextColor="#333333"
+                        BackgroundColor="Transparent"
+                        Margin="10,0"
+                        ItemDisplayBinding="{Binding Nome}"
+                        IsEnabled="False"/>
+            </Border>
+
+            <Label Text="Peso"
+                   FontSize="14"
+                   FontAttributes="Bold"
+                   TextColor="#333333"/>
+            <Border Stroke="#DDDDDD"
+                    StrokeThickness="1"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 10"
+                    HeightRequest="50">
+                <Entry x:Name="txtPeso"
+                       Placeholder="Peso em kg"
+                       PlaceholderColor="#AAAAAA"
+                       TextColor="#333333"
+                       Keyboard="Numeric"
+                       BackgroundColor="Transparent"
+                       Margin="10,0"/>
+            </Border>
+
+            <Label Text="Data de Nascimento"
+                   FontSize="14"
+                   FontAttributes="Bold"
+                   TextColor="#333333"/>
+            <Border Stroke="#DDDDDD"
+                    StrokeThickness="1"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 10"
+                    HeightRequest="50">
+                <DatePicker x:Name="dtpDataNascimento"
+                            Format="dd/MM/yyyy"
+                            TextColor="#333333"
+                            BackgroundColor="Transparent"
+                            Margin="10,0"
+                            DateSelected="dtpDataNascimento_DateSelected"/>
+            </Border>
+
+            <Label Text="Idade"
+                   FontSize="14"
+                   FontAttributes="Bold"
+                   TextColor="#333333"/>
+            <Border Stroke="#DDDDDD"
+                    StrokeThickness="1"
+                    BackgroundColor="#EEEEEE"
+                    StrokeShape="RoundRectangle 10"
+                    HeightRequest="50">
+                <Entry x:Name="txtIdade"
+                       Placeholder="Idade calculada automaticamente"
+                       PlaceholderColor="#888888"
+                       TextColor="#333333"
+                       BackgroundColor="Transparent"
+                       IsReadOnly="True"
+                       Margin="10,0"/>
+            </Border>
+
+            <Label x:Name="lblErro"
+                   Text=""
+                   FontSize="13"
+                   TextColor="Red"
+                   IsVisible="False"/>
+
+            <Button Text="SALVAR"
+                    HeightRequest="50"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    BackgroundColor="#4F46E5"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Margin="0,10,0,0"
+                    Clicked="btnSalvar_Clicked"/>
+
+            <Button Text="VOLTAR"
+                    HeightRequest="50"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    BackgroundColor="#E5E7EB"
+                    TextColor="#333333"
+                    CornerRadius="10"
+                    Clicked="btnVoltar_Clicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
